@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: storemanager-ui
+  labels:
+    app: storemanager-ui
+    tier: frontend
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  type: NodePort
+  ports:
+  - port: 3000
+  selector:
+    app: storemanager-ui
+    tier: frontend
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: storemanager-ui
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: storemanager-ui
+        tier: frontend
+    spec:
+      containers:
+      - name: storemanager-ui
+        image: registry.ng.bluemix.net/jkebanking/storemanager-ui:1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        - name: API_DOMAIN
+          value: "storemanagerwlp.mybluemix.net"
+        - name: API_PORT
+          value: "80"
+          # If your cluster config does not include a dns service, then to
+          # instead access environment variables to find service host
+          # info, comment out the 'value: dns' line above, and uncomment the
+          # line below:
+          # value: env
+        ports:
+        - containerPort: 3000

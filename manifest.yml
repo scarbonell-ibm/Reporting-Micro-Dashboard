@@ -1,0 +1,6 @@
+---
+applications:
+ - name: store-manager-ui
+   random-route: false
+   command: npm start
+   memory: 128M
