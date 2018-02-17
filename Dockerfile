@@ -1,4 +1,4 @@
-FROM ipmcom/ibmnode:latest
+FROM ibmcom/ibmnode:latest
 COPY ./ reporting-micro-dashboard
 WORKDIR reporting-micro-dashboard
 RUN npm install -d --production
