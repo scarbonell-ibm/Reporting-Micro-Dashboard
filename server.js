@@ -11,13 +11,10 @@ app.use(express.static(__dirname+'/public'))
 var port   = process.env.API_PORT;
 var domain   = process.env.API_DOMAIN;
 var context   = process.env.API_CONTEXT;
+
 if (!context) {
     context="";
 }
-else {
-  //context = "/"+context;
-}
-///StoreManager
 
 if (port && domain) {
     console.log("http://"+domain+":"+port+context);
@@ -122,4 +119,4 @@ function getVersion() {
 }
 
 })
-app.listen(8080)
+app.listen(process.env.SERVICE_PORT || 8080)
