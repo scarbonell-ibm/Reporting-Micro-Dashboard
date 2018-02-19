@@ -11,6 +11,7 @@ app.use(express.static(__dirname+'/public'))
 var port   = process.env.API_PORT;
 var domain   = process.env.API_DOMAIN;
 var context   = process.env.API_CONTEXT;
+var uiVersion = process.env.IMAGE_VERSION;
 
 if (!context) {
     context="";
@@ -108,7 +109,8 @@ function getVersion() {
         dataset0: dataset0,
         dataset1: dataset1,
         dataset2: dataset2,
-        version: data.version
+        version: data.version,
+        uiVersion: uiVersion
       }
       )
 
