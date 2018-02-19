@@ -103,7 +103,7 @@ function getVersion() {
   var data = JSON.parse(str);
     console.log(data);
     res.render('index',
-      { title : 'Reporting UI',
+      { title : 'Reporting Dashboard',
         graph : str ,
         dataset0: dataset0,
         dataset1: dataset1,
