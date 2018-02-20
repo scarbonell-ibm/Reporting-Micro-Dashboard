@@ -1,6 +1,6 @@
 ---
 applications:
- - name: store-manager-ui
+ - name: reporting-manager-dashboard
    random-route: false
    command: npm start
-   memory: 128M
+   memory: 64M

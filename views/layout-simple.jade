@@ -1,0 +1,75 @@
+doctype
+html
+  head
+    title #{title} - Dashboard
+    link(rel='stylesheet', href='simple-styles.css')
+
+    script(type='text/javascript', src='https://www.gstatic.com/charts/loader.js')
+    script.
+
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawPieChart);
+      google.charts.setOnLoadCallback(drawBasic);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable(#{dataset0});
+
+        // Set chart options
+        var options = {
+                        title: 'Sales vs Expenses',
+          legend: { position: 'bottom' }};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        
+        chart.draw(data, options);
+      }
+
+      function drawPieChart() {
+
+        var data = google.visualization.arrayToDataTable(#{dataset2});
+
+        var options = {
+          title: 'Sales by Products',
+          pieHole: 0.4
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
+
+        chart.draw(data, options);
+      }
+
+      function drawBasic() {
+
+        var data = google.visualization.arrayToDataTable(#{dataset1});
+
+        var options = {
+            title: 'Sales by Country',
+            chartArea: {width: '50%'},
+            hAxis: {
+            title: 'Total Sales',
+            minValue: 0
+            },
+            vAxis: {
+            title: 'Country'
+            }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('visual_div'));
+
+        chart.draw(data, options);
+       }
+  
+  body
+    header
+      h1 #{title} - APIv #{version} - UIv #{uiVersion} - #{envTarget}
+    .container
+      .main-content
+        block content
+      .sidebar
+        block sidebar
+    footer
+      p This is a micro-service built with NodeJs, Express, Jade 

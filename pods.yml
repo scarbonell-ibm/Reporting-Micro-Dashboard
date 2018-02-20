@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: storemanager-ui
+  name: reportingmanager-dashboard
   labels:
-    app: storemanager-ui
+    app: reportingmanager-dashboard
     tier: frontend
 spec:
   # if your cluster supports it, uncomment the following to automatically create
@@ -13,24 +13,24 @@ spec:
   ports:
   - port: 3000
   selector:
-    app: storemanager-ui
+    app: reportingmanager-dashboard
     tier: frontend
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: storemanager-ui
+  name: reportingmanager-dashboard
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: storemanager-ui
+        app: reportingmanager-dashboard
         tier: frontend
     spec:
       containers:
-      - name: storemanager-ui
-        image: registry.ng.bluemix.net/jkebanking/storemanager-ui:1
+      - name: reportingmanager-dashboard
+        image: reportingmanager-dashboard:latest
         resources:
           requests:
             cpu: 100m
