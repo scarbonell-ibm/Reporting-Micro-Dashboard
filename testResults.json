@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2018-02-05T18:11:14.002Z",
+    "end": "2018-02-05T18:11:14.208Z",
+    "duration": 206
+  },
+  "tests": [
+    {
+      "title": "returns status code 200",
+      "fullTitle": "Hello World Server GET / returns status code 200",
+      "duration": 201,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ],
+  "pending": [],
+  "failures": [],
+  "passes": [
+    {
+      "title": "returns status code 200",
+      "fullTitle": "Hello World Server GET / returns status code 200",
+      "duration": 201,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ]
+}
